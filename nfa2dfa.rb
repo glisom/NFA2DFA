@@ -97,9 +97,14 @@ def start(init_state, total_states, final_states, moves, seen_states, table, fin
     end
 
     for state in seen_states
-        if state.intersect? final_states
-            final_f_states << (seen_states.index(state) + 1)
+        for s in state
+            if final_states.include? s
+                final_f_states << (seen_states.index(state) + 1)
+            end
         end
+        # if state.intersect? final_states
+        #     final_f_states << (seen_states.index(state) + 1)
+        # end
     end
 
 end
